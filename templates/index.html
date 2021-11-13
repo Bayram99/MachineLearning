@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    body {
+  background-color: #2ecc71;
+  font-family: source-sans-pro, sans-serif;
+}
+
+h1 {
+  margin-left: auto;
+  margin-top: 50px;
+  text-align: center;
+  font-weight: 100;
+  font-size: 2.8em;
+  color: #ffffff;
+}
+
+div {
+  width: 500px;
+  margin: auto;
+}
+
+.formStyle { 
+  background-color: #2ecc71;
+  padding: 20px; 
+  width: 400px; 
+  margin-bottom: 20px; 
+  border-bottom-width: 1px; 
+  border-bottom-style: solid; 
+  border-bottom-color: #ecf0f1; 
+  border-top-style: none; 
+  border-right-style: none; 
+  border-left-style: none; 
+  font-size: 1em;
+  font-weight: 100;
+  color: #ffffff;
+}
+
+.formButton {
+  float: right;
+	background-color:#ffffff;
+	display:inline-block;
+	color:#2ecc71;
+	font-size:28px;
+	font-weight: 500;
+	padding:6px 24px;
+  margin-top: 15px;
+  margin-right: 60px;
+	text-decoration:none;
+}
+
+.formButton:hover {
+	background-color: #27ae60;
+  color:#ffffff;
+}
+
+.formButton:active {
+	position:relative;
+	top:3px;
+}
+
+/*To remove the outline that appears on clicking the input textbox*/
+input:focus {
+  outline: none;
+}
+
+/* To format the placeholder text color */
+::-webkit-input-placeholder {
+   color: #ecf0f1;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #ecf0f1;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #ecf0f1;  
+}
+
+:-ms-input-placeholder {  
+   color: #ecf0f1;  
+}
+    </style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>Heart disease Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Male is 0" placeholder="female is 0, male is 1" required="required" class="formStyle" />
+        <input type="text" name="Age" placeholder="Age" required="required" class="formStyle"/>
+		<input type="text" name="education" placeholder="how many cigs per day" required="required" class="formStyle"/>
+		<input type="text" name="current smoker is 1" placeholder="heart rate" required="required"class="formStyle" />
+
+        <button type="submit" class="btn btn-primary formButton">Predict</button>
+    </form>
+     <h4>10 year risk of coronary heart disease CHD (binary: “1”, means “Yes”, “0” means “No”) </h4>
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
